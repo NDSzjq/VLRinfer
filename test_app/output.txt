@@ -1,0 +1,966 @@
+make -f sgx_u.mk LINUX_SGX_BUILD=0 all
+make[1]: Entering directory '/home/pigeon/intel-sgx-ssl/Linux/sgx/test_app'
+GEN  =>  app/TestEnclave_u.c
+CC   <=  app/TestEnclave_u.c
+app/TestApp.cpp: In function ‘int initialize_enclave()’:
+app/TestApp.cpp:184:45: warning: argument to ‘sizeof’ in ‘char* strncpy(char*, const char*, size_t)’ call is the same expression as the source; did you mean to use the size of the destination? [-Wsizeof-pointer-memaccess]
+  184 |         strncpy(token_path, TOKEN_FILENAME, sizeof(TOKEN_FILENAME));
+      |                                             ^~~~~~~~~~~~~~~~~~~~~~
+In file included from /usr/include/string.h:494,
+                 from app/TestApp.cpp:34:
+In function ‘char* strncpy(char*, const char*, size_t)’,
+    inlined from ‘int initialize_enclave()’ at app/TestApp.cpp:179:16:
+/usr/include/x86_64-linux-gnu/bits/string_fortified.h:106:34: warning: ‘char* __builtin___strncpy_chk(char*, const char*, long unsigned int, long unsigned int)’ output truncated before terminating nul copying as many bytes from a string as its length [-Wstringop-truncation]
+  106 |   return __builtin___strncpy_chk (__dest, __src, __len, __bos (__dest));
+      |          ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+app/TestApp.cpp: In function ‘int initialize_enclave()’:
+app/TestApp.cpp:177:16: note: length computed here
+  177 |         (strlen(home_dir)+strlen("/")+sizeof(TOKEN_FILENAME)+1) <= MAX_PATH) {
+      |          ~~~~~~^~~~~~~~~~
+CXX  <=  app/TestApp.cpp
+LINK =>  TestApp
+make[1]: Leaving directory '/home/pigeon/intel-sgx-ssl/Linux/sgx/test_app'
+make -f sgx_t.mk LINUX_SGX_BUILD=0 all
+make[1]: Entering directory '/home/pigeon/intel-sgx-ssl/Linux/sgx/test_app'
+GEN  =>  enclave/TestEnclave_t.c
+CC   <=  enclave/TestEnclave_t.c
+CXX  <=  enclave/TestEnclave.cpp
+CC  <=  enclave/tests/ecdhtest.c
+CC  <=  enclave/tests/sha1test.c
+CC  <=  enclave/tests/missing_funcs.c
+CC  <=  enclave/tests/threadstest.c
+CC  <=  enclave/tests/stdio_func.c
+CC  <=  enclave/tests/dhtest.c
+CC  <=  enclave/tests/ecdsatest.c
+CC  <=  enclave/tests/rsa_test.c
+CC  <=  enclave/tests/bntest.c
+CC  <=  enclave/tests/sha256t.c
+CC  <=  enclave/tests/ectest.c
+CC  <=  enclave/tests/evp_smx.c
+LINK =>  TestEnclave.so
+[traverser_parameter manage_metadata.cpp:117] ProdID = 0
+[traverser_parameter manage_metadata.cpp:117] ISVSVN = 0
+[traverser_parameter manage_metadata.cpp:117] StackMaxSize = 0x40000
+[traverser_parameter manage_metadata.cpp:117] HeapMaxSize = 0x1000000
+[traverser_parameter manage_metadata.cpp:117] TCSNum = 10
+[traverser_parameter manage_metadata.cpp:117] TCSPolicy = 1
+[traverser_parameter manage_metadata.cpp:117] DisableDebug = 0
+[parse_dyn elfparser.cpp:176] dynamic tag = 19, ptr = 28e9d0
+[parse_dyn elfparser.cpp:176] dynamic tag = 1b, ptr = 10
+[parse_dyn elfparser.cpp:176] dynamic tag = 1a, ptr = 28e9e0
+[parse_dyn elfparser.cpp:176] dynamic tag = 1c, ptr = 40
+[parse_dyn elfparser.cpp:176] dynamic tag = 6ffffef5, ptr = 3c8
+[parse_dyn elfparser.cpp:176] dynamic tag = 5, ptr = 468
+[parse_dyn elfparser.cpp:176] dynamic tag = 6, ptr = 3f0
+[parse_dyn elfparser.cpp:176] dynamic tag = a, ptr = 43
+[parse_dyn elfparser.cpp:176] dynamic tag = b, ptr = 18
+[parse_dyn elfparser.cpp:176] dynamic tag = 15, ptr = 0
+[parse_dyn elfparser.cpp:176] dynamic tag = 3, ptr = 2b8ed8
+[parse_dyn elfparser.cpp:176] dynamic tag = 7, ptr = 4f0
+[parse_dyn elfparser.cpp:176] dynamic tag = 8, ptr = 3c7c8
+[parse_dyn elfparser.cpp:176] dynamic tag = 9, ptr = 18
+[parse_dyn elfparser.cpp:176] dynamic tag = 6ffffffc, ptr = 4b8
+[parse_dyn elfparser.cpp:176] dynamic tag = 6ffffffd, ptr = 2
+[parse_dyn elfparser.cpp:176] dynamic tag = 18, ptr = 0
+[parse_dyn elfparser.cpp:176] dynamic tag = 6ffffffb, ptr = 8000001
+[parse_dyn elfparser.cpp:176] dynamic tag = 6ffffff0, ptr = 4ac
+[parse_dyn elfparser.cpp:176] dynamic tag = 6ffffff9, ptr = 2851
+[get_section elfparser.cpp:83] section [0] : sh_addr = 0, sh_size = 0, sh_offset = 0, sh_name = 0
+[get_section elfparser.cpp:83] section [1] .interp: sh_addr = 350, sh_size = 1c, sh_offset = 350, sh_name = 1b
+[get_section elfparser.cpp:83] section [2] .note.gnu.property: sh_addr = 370, sh_size = 30, sh_offset = 370, sh_name = 23
+[get_section elfparser.cpp:83] section [3] .note.gnu.build-id: sh_addr = 3a0, sh_size = 24, sh_offset = 3a0, sh_name = 36
+[get_section elfparser.cpp:83] section [4] .gnu.hash: sh_addr = 3c8, sh_size = 28, sh_offset = 3c8, sh_name = 49
+[get_section elfparser.cpp:83] section [5] .dynsym: sh_addr = 3f0, sh_size = 78, sh_offset = 3f0, sh_name = 53
+[get_section elfparser.cpp:83] section [0] : sh_addr = 0, sh_size = 0, sh_offset = 0, sh_name = 0
+[get_section elfparser.cpp:83] section [1] .interp: sh_addr = 350, sh_size = 1c, sh_offset = 350, sh_name = 1b
+[get_section elfparser.cpp:83] section [2] .note.gnu.property: sh_addr = 370, sh_size = 30, sh_offset = 370, sh_name = 23
+[get_section elfparser.cpp:83] section [3] .note.gnu.build-id: sh_addr = 3a0, sh_size = 24, sh_offset = 3a0, sh_name = 36
+[get_section elfparser.cpp:83] section [4] .gnu.hash: sh_addr = 3c8, sh_size = 28, sh_offset = 3c8, sh_name = 49
+[get_section elfparser.cpp:83] section [5] .dynsym: sh_addr = 3f0, sh_size = 78, sh_offset = 3f0, sh_name = 53
+[get_section elfparser.cpp:83] section [6] .dynstr: sh_addr = 468, sh_size = 43, sh_offset = 468, sh_name = 5b
+[get_section elfparser.cpp:83] section [0] : sh_addr = 0, sh_size = 0, sh_offset = 0, sh_name = 0
+[get_section elfparser.cpp:83] section [1] .interp: sh_addr = 350, sh_size = 1c, sh_offset = 350, sh_name = 1b
+[get_section elfparser.cpp:83] section [2] .note.gnu.property: sh_addr = 370, sh_size = 30, sh_offset = 370, sh_name = 23
+[get_section elfparser.cpp:83] section [3] .note.gnu.build-id: sh_addr = 3a0, sh_size = 24, sh_offset = 3a0, sh_name = 36
+[get_section elfparser.cpp:83] section [4] .gnu.hash: sh_addr = 3c8, sh_size = 28, sh_offset = 3c8, sh_name = 49
+[get_section elfparser.cpp:83] section [5] .dynsym: sh_addr = 3f0, sh_size = 78, sh_offset = 3f0, sh_name = 53
+[get_section elfparser.cpp:83] section [6] .dynstr: sh_addr = 468, sh_size = 43, sh_offset = 468, sh_name = 5b
+[get_section elfparser.cpp:83] section [7] .gnu.version: sh_addr = 4ac, sh_size = a, sh_offset = 4ac, sh_name = 63
+[get_section elfparser.cpp:83] section [8] .gnu.version_d: sh_addr = 4b8, sh_size = 38, sh_offset = 4b8, sh_name = 70
+[get_section elfparser.cpp:83] section [9] .rela.dyn: sh_addr = 4f0, sh_size = 3c7c8, sh_offset = 4f0, sh_name = 7f
+[get_section elfparser.cpp:83] section [0] : sh_addr = 0, sh_size = 0, sh_offset = 0, sh_name = 0
+[get_section elfparser.cpp:83] section [0] : sh_addr = 0, sh_size = 0, sh_offset = 0, sh_name = 0
+[get_section elfparser.cpp:83] section [1] .interp: sh_addr = 350, sh_size = 1c, sh_offset = 350, sh_name = 1b
+[get_section elfparser.cpp:83] section [2] .note.gnu.property: sh_addr = 370, sh_size = 30, sh_offset = 370, sh_name = 23
+[get_section elfparser.cpp:83] section [3] .note.gnu.build-id: sh_addr = 3a0, sh_size = 24, sh_offset = 3a0, sh_name = 36
+[get_section elfparser.cpp:83] section [4] .gnu.hash: sh_addr = 3c8, sh_size = 28, sh_offset = 3c8, sh_name = 49
+[get_section elfparser.cpp:83] section [5] .dynsym: sh_addr = 3f0, sh_size = 78, sh_offset = 3f0, sh_name = 53
+[get_section elfparser.cpp:83] section [6] .dynstr: sh_addr = 468, sh_size = 43, sh_offset = 468, sh_name = 5b
+[get_section elfparser.cpp:83] section [7] .gnu.version: sh_addr = 4ac, sh_size = a, sh_offset = 4ac, sh_name = 63
+[get_section elfparser.cpp:83] section [8] .gnu.version_d: sh_addr = 4b8, sh_size = 38, sh_offset = 4b8, sh_name = 70
+[get_section elfparser.cpp:83] section [9] .rela.dyn: sh_addr = 4f0, sh_size = 3c7c8, sh_offset = 4f0, sh_name = 7f
+[get_section elfparser.cpp:83] section [10] .plt: sh_addr = 3d000, sh_size = 10, sh_offset = 3d000, sh_name = 89
+[get_section elfparser.cpp:83] section [11] .plt.got: sh_addr = 3d010, sh_size = 10, sh_offset = 3d010, sh_name = 8e
+[get_section elfparser.cpp:83] section [12] .text: sh_addr = 3e000, sh_size = 1b9b6d, sh_offset = 3e000, sh_name = 97
+[get_section elfparser.cpp:83] section [13] Q6A8dc14f40efc4288a03b32cba4e: sh_addr = 1f7b6d, sh_size = 5, sh_offset = 1f7b6d, sh_name = 9d
+[get_section elfparser.cpp:83] section [14] .nipx: sh_addr = 1f7b72, sh_size = d3f, sh_offset = 1f7b72, sh_name = bb
+[get_section elfparser.cpp:83] section [15] .rodata: sh_addr = 1f9000, sh_size = 4ef85, sh_offset = 1f9000, sh_name = c1
+[get_section elfparser.cpp:83] section [16] .niprod: sh_addr = 247fc0, sh_size = 900, sh_offset = 247fc0, sh_name = c9
+[get_section elfparser.cpp:83] section [17] .eh_frame_hdr: sh_addr = 2488c0, sh_size = b564, sh_offset = 2488c0, sh_name = d1
+[get_section elfparser.cpp:83] section [18] .eh_frame: sh_addr = 253e28, sh_size = 39048, sh_offset = 253e28, sh_name = df
+[get_section elfparser.cpp:83] section [19] .gcc_except_table: sh_addr = 28ce70, sh_size = 119, sh_offset = 28ce70, sh_name = e9
+[get_section elfparser.cpp:83] section [20] .tbss: sh_addr = 28e9d0, sh_size = 90, sh_offset = 28d9d0, sh_name = fb
+[get_section elfparser.cpp:83] section [21] .init_array: sh_addr = 28e9d0, sh_size = 10, sh_offset = 28d9d0, sh_name = 101
+[get_section elfparser.cpp:83] section [22] .fini_array: sh_addr = 28e9e0, sh_size = 40, sh_offset = 28d9e0, sh_name = 10d
+[get_section elfparser.cpp:83] section [23] .data.rel.ro: sh_addr = 28ea20, sh_size = 2a328, sh_offset = 28da20, sh_name = 119
+[get_section elfparser.cpp:83] section [24] .dynamic: sh_addr = 2b8d48, sh_size = 190, sh_offset = 2b7d48, sh_name = 126
+[get_section elfparser.cpp:83] section [25] .got: sh_addr = 2b8ed8, sh_size = 128, sh_offset = 2b7ed8, sh_name = 92
+[get_section elfparser.cpp:83] section [26] .data: sh_addr = 2b9000, sh_size = 2600, sh_offset = 2b8000, sh_name = 12f
+[get_section elfparser.cpp:83] section [27] .nipd: sh_addr = 2bb600, sh_size = 8, sh_offset = 2ba600, sh_name = 135
+[get_section elfparser.cpp:83] section [28] .bss: sh_addr = 2bb620, sh_size = 14690, sh_offset = 2ba608, sh_name = 13b
+[get_section elfparser.cpp:83] section [29] .comment: sh_addr = 0, sh_size = 52, sh_offset = 2ba608, sh_name = 140
+[get_section elfparser.cpp:83] section [30] .note.sgxmeta: sh_addr = 0, sh_size = 501c, sh_offset = 2ba65c, sh_name = 149
+[get_section elfparser.cpp:83] section [31] .debug_aranges: sh_addr = 0, sh_size = 3ca0, sh_offset = 2bf680, sh_name = 157
+[get_section elfparser.cpp:83] section [32] .debug_info: sh_addr = 0, sh_size = 47d48, sh_offset = 2c3320, sh_name = 166
+[get_section elfparser.cpp:83] section [33] .debug_abbrev: sh_addr = 0, sh_size = d11c, sh_offset = 30b068, sh_name = 172
+[get_section elfparser.cpp:83] section [34] .debug_line: sh_addr = 0, sh_size = 16311, sh_offset = 318184, sh_name = 180
+[get_section elfparser.cpp:83] section [35] .debug_str: sh_addr = 0, sh_size = 9d89, sh_offset = 32e495, sh_name = 18c
+[get_section elfparser.cpp:83] section [36] .debug_ranges: sh_addr = 0, sh_size = 3740, sh_offset = 33821e, sh_name = 197
+[get_section elfparser.cpp:83] section [37] .symtab: sh_addr = 0, sh_size = 2fe20, sh_offset = 33b960, sh_name = 1
+[get_section elfparser.cpp:83] section [38] .strtab: sh_addr = 0, sh_size = 22fac, sh_offset = 36b780, sh_name = 9
+[get_section elfparser.cpp:83] section [39] .shstrtab: sh_addr = 0, sh_size = 1a5, sh_offset = 38e72c, sh_name = 11
+[get_section elfparser.cpp:83] section [0] : sh_addr = 0, sh_size = 0, sh_offset = 0, sh_name = 0
+[get_section elfparser.cpp:83] section [1] .interp: sh_addr = 350, sh_size = 1c, sh_offset = 350, sh_name = 1b
+[get_section elfparser.cpp:83] section [2] .note.gnu.property: sh_addr = 370, sh_size = 30, sh_offset = 370, sh_name = 23
+[get_section elfparser.cpp:83] section [3] .note.gnu.build-id: sh_addr = 3a0, sh_size = 24, sh_offset = 3a0, sh_name = 36
+[get_section elfparser.cpp:83] section [4] .gnu.hash: sh_addr = 3c8, sh_size = 28, sh_offset = 3c8, sh_name = 49
+[get_section elfparser.cpp:83] section [5] .dynsym: sh_addr = 3f0, sh_size = 78, sh_offset = 3f0, sh_name = 53
+[get_section elfparser.cpp:83] section [6] .dynstr: sh_addr = 468, sh_size = 43, sh_offset = 468, sh_name = 5b
+[get_section elfparser.cpp:83] section [7] .gnu.version: sh_addr = 4ac, sh_size = a, sh_offset = 4ac, sh_name = 63
+[get_section elfparser.cpp:83] section [8] .gnu.version_d: sh_addr = 4b8, sh_size = 38, sh_offset = 4b8, sh_name = 70
+[get_section elfparser.cpp:83] section [9] .rela.dyn: sh_addr = 4f0, sh_size = 3c7c8, sh_offset = 4f0, sh_name = 7f
+[get_section elfparser.cpp:83] section [10] .plt: sh_addr = 3d000, sh_size = 10, sh_offset = 3d000, sh_name = 89
+[get_section elfparser.cpp:83] section [11] .plt.got: sh_addr = 3d010, sh_size = 10, sh_offset = 3d010, sh_name = 8e
+[get_section elfparser.cpp:83] section [12] .text: sh_addr = 3e000, sh_size = 1b9b6d, sh_offset = 3e000, sh_name = 97
+[get_section elfparser.cpp:83] section [13] Q6A8dc14f40efc4288a03b32cba4e: sh_addr = 1f7b6d, sh_size = 5, sh_offset = 1f7b6d, sh_name = 9d
+[get_section elfparser.cpp:83] section [14] .nipx: sh_addr = 1f7b72, sh_size = d3f, sh_offset = 1f7b72, sh_name = bb
+[get_section elfparser.cpp:83] section [15] .rodata: sh_addr = 1f9000, sh_size = 4ef85, sh_offset = 1f9000, sh_name = c1
+[get_section elfparser.cpp:83] section [16] .niprod: sh_addr = 247fc0, sh_size = 900, sh_offset = 247fc0, sh_name = c9
+[get_section elfparser.cpp:83] section [17] .eh_frame_hdr: sh_addr = 2488c0, sh_size = b564, sh_offset = 2488c0, sh_name = d1
+[get_section elfparser.cpp:83] section [18] .eh_frame: sh_addr = 253e28, sh_size = 39048, sh_offset = 253e28, sh_name = df
+[get_section elfparser.cpp:83] section [19] .gcc_except_table: sh_addr = 28ce70, sh_size = 119, sh_offset = 28ce70, sh_name = e9
+[get_section elfparser.cpp:83] section [20] .tbss: sh_addr = 28e9d0, sh_size = 90, sh_offset = 28d9d0, sh_name = fb
+[get_section elfparser.cpp:83] section [21] .init_array: sh_addr = 28e9d0, sh_size = 10, sh_offset = 28d9d0, sh_name = 101
+[get_section elfparser.cpp:83] section [22] .fini_array: sh_addr = 28e9e0, sh_size = 40, sh_offset = 28d9e0, sh_name = 10d
+[get_section elfparser.cpp:83] section [23] .data.rel.ro: sh_addr = 28ea20, sh_size = 2a328, sh_offset = 28da20, sh_name = 119
+[get_section elfparser.cpp:83] section [24] .dynamic: sh_addr = 2b8d48, sh_size = 190, sh_offset = 2b7d48, sh_name = 126
+[get_section elfparser.cpp:83] section [25] .got: sh_addr = 2b8ed8, sh_size = 128, sh_offset = 2b7ed8, sh_name = 92
+[get_section elfparser.cpp:83] section [26] .data: sh_addr = 2b9000, sh_size = 2600, sh_offset = 2b8000, sh_name = 12f
+[get_section elfparser.cpp:83] section [27] .nipd: sh_addr = 2bb600, sh_size = 8, sh_offset = 2ba600, sh_name = 135
+[get_section elfparser.cpp:83] section [28] .bss: sh_addr = 2bb620, sh_size = 14690, sh_offset = 2ba608, sh_name = 13b
+[get_section elfparser.cpp:83] section [29] .comment: sh_addr = 0, sh_size = 52, sh_offset = 2ba608, sh_name = 140
+[get_section elfparser.cpp:83] section [30] .note.sgxmeta: sh_addr = 0, sh_size = 501c, sh_offset = 2ba65c, sh_name = 149
+LOAD Section: 1
+Flags = 0x0000000000000004
+VAddr = 0x0000000000000000
+Size  = 0x000000000003CCB8
+
+LOAD Section: 2
+Flags = 0x0000000000000005
+VAddr = 0x000000000003D000
+Size  = 0x00000000001BB8B1
+
+LOAD Section: 3
+Flags = 0x0000000000000004
+VAddr = 0x00000000001F9000
+Size  = 0x0000000000093F89
+
+LOAD Section: 4
+Flags = 0x0000000000000006
+VAddr = 0x000000000028E9D0
+Size  = 0x00000000000412E0
+
+TLS Section: 5
+Flags = 0x0000000000000004
+VAddr = 0x000000000028E9D0
+Size  = 0x0000000000000090
+
+[get_section elfparser.cpp:83] section [0] : sh_addr = 0, sh_size = 0, sh_offset = 0, sh_name = 0
+[get_section elfparser.cpp:83] section [1] .interp: sh_addr = 350, sh_size = 1c, sh_offset = 350, sh_name = 1b
+[get_section elfparser.cpp:83] section [2] .note.gnu.property: sh_addr = 370, sh_size = 30, sh_offset = 370, sh_name = 23
+[get_section elfparser.cpp:83] section [3] .note.gnu.build-id: sh_addr = 3a0, sh_size = 24, sh_offset = 3a0, sh_name = 36
+[get_section elfparser.cpp:83] section [4] .gnu.hash: sh_addr = 3c8, sh_size = 28, sh_offset = 3c8, sh_name = 49
+[get_section elfparser.cpp:83] section [5] .dynsym: sh_addr = 3f0, sh_size = 78, sh_offset = 3f0, sh_name = 53
+[get_section elfparser.cpp:83] section [6] .dynstr: sh_addr = 468, sh_size = 43, sh_offset = 468, sh_name = 5b
+[get_section elfparser.cpp:83] section [7] .gnu.version: sh_addr = 4ac, sh_size = a, sh_offset = 4ac, sh_name = 63
+[get_section elfparser.cpp:83] section [8] .gnu.version_d: sh_addr = 4b8, sh_size = 38, sh_offset = 4b8, sh_name = 70
+[get_section elfparser.cpp:83] section [9] .rela.dyn: sh_addr = 4f0, sh_size = 3c7c8, sh_offset = 4f0, sh_name = 7f
+[get_section elfparser.cpp:83] section [10] .plt: sh_addr = 3d000, sh_size = 10, sh_offset = 3d000, sh_name = 89
+[get_section elfparser.cpp:83] section [11] .plt.got: sh_addr = 3d010, sh_size = 10, sh_offset = 3d010, sh_name = 8e
+[get_section elfparser.cpp:83] section [12] .text: sh_addr = 3e000, sh_size = 1b9b6d, sh_offset = 3e000, sh_name = 97
+[get_section elfparser.cpp:83] section [13] Q6A8dc14f40efc4288a03b32cba4e: sh_addr = 1f7b6d, sh_size = 5, sh_offset = 1f7b6d, sh_name = 9d
+[get_section elfparser.cpp:83] section [14] .nipx: sh_addr = 1f7b72, sh_size = d3f, sh_offset = 1f7b72, sh_name = bb
+[get_section elfparser.cpp:83] section [15] .rodata: sh_addr = 1f9000, sh_size = 4ef85, sh_offset = 1f9000, sh_name = c1
+[get_section elfparser.cpp:83] section [16] .niprod: sh_addr = 247fc0, sh_size = 900, sh_offset = 247fc0, sh_name = c9
+[get_section elfparser.cpp:83] section [17] .eh_frame_hdr: sh_addr = 2488c0, sh_size = b564, sh_offset = 2488c0, sh_name = d1
+[get_section elfparser.cpp:83] section [18] .eh_frame: sh_addr = 253e28, sh_size = 39048, sh_offset = 253e28, sh_name = df
+[get_section elfparser.cpp:83] section [19] .gcc_except_table: sh_addr = 28ce70, sh_size = 119, sh_offset = 28ce70, sh_name = e9
+[get_section elfparser.cpp:83] section [20] .tbss: sh_addr = 28e9d0, sh_size = 90, sh_offset = 28d9d0, sh_name = fb
+[get_section elfparser.cpp:83] section [21] .init_array: sh_addr = 28e9d0, sh_size = 10, sh_offset = 28d9d0, sh_name = 101
+[get_section elfparser.cpp:83] section [22] .fini_array: sh_addr = 28e9e0, sh_size = 40, sh_offset = 28d9e0, sh_name = 10d
+[get_section elfparser.cpp:83] section [23] .data.rel.ro: sh_addr = 28ea20, sh_size = 2a328, sh_offset = 28da20, sh_name = 119
+[get_section elfparser.cpp:83] section [24] .dynamic: sh_addr = 2b8d48, sh_size = 190, sh_offset = 2b7d48, sh_name = 126
+[get_section elfparser.cpp:83] section [25] .got: sh_addr = 2b8ed8, sh_size = 128, sh_offset = 2b7ed8, sh_name = 92
+[get_section elfparser.cpp:83] section [26] .data: sh_addr = 2b9000, sh_size = 2600, sh_offset = 2b8000, sh_name = 12f
+[get_section elfparser.cpp:83] section [27] .nipd: sh_addr = 2bb600, sh_size = 8, sh_offset = 2ba600, sh_name = 135
+[get_section elfparser.cpp:83] section [28] .bss: sh_addr = 2bb620, sh_size = 14690, sh_offset = 2ba608, sh_name = 13b
+[get_section elfparser.cpp:83] section [29] .comment: sh_addr = 0, sh_size = 52, sh_offset = 2ba608, sh_name = 140
+[get_section elfparser.cpp:83] section [30] .note.sgxmeta: sh_addr = 0, sh_size = 501c, sh_offset = 2ba65c, sh_name = 149
+[get_section elfparser.cpp:83] section [31] .debug_aranges: sh_addr = 0, sh_size = 3ca0, sh_offset = 2bf680, sh_name = 157
+[get_section elfparser.cpp:83] section [32] .debug_info: sh_addr = 0, sh_size = 47d48, sh_offset = 2c3320, sh_name = 166
+[get_section elfparser.cpp:83] section [33] .debug_abbrev: sh_addr = 0, sh_size = d11c, sh_offset = 30b068, sh_name = 172
+[get_section elfparser.cpp:83] section [34] .debug_line: sh_addr = 0, sh_size = 16311, sh_offset = 318184, sh_name = 180
+[get_section elfparser.cpp:83] section [35] .debug_str: sh_addr = 0, sh_size = 9d89, sh_offset = 32e495, sh_name = 18c
+[get_section elfparser.cpp:83] section [36] .debug_ranges: sh_addr = 0, sh_size = 3740, sh_offset = 33821e, sh_name = 197
+[get_section elfparser.cpp:83] section [37] .symtab: sh_addr = 0, sh_size = 2fe20, sh_offset = 33b960, sh_name = 1
+[get_section elfparser.cpp:83] section [38] .strtab: sh_addr = 0, sh_size = 22fac, sh_offset = 36b780, sh_name = 9
+[get_section elfparser.cpp:83] section [39] .shstrtab: sh_addr = 0, sh_size = 1a5, sh_offset = 38e72c, sh_name = 11
+tcs_num 10, tcs_max_num 10, tcs_min_pool 1
+[check_xml_parameter manage_metadata.cpp:558] RSRV_MIN_SIZE  = 0x0000000000000000
+[check_xml_parameter manage_metadata.cpp:559] RSRV_INIT_SIZE = 0x0000000000000000
+[check_xml_parameter manage_metadata.cpp:560] RSRV_MAX_SIZE  = 0x0000000000000000
+[update_layout_entries manage_metadata.cpp:590] 
+	Entry Id( 0) =    1, HEAP_MIN        ,  Page Count =     1,  Attributes = 0x01,  Flags = 0x0000000000000203,  RVA = 0x00000000002D0000 --- 0x00000000002D0FFF
+	Entry Id( 1) =    2, HEAP_INIT       ,  Page Count =  4095,  Attributes = 0x19,  Flags = 0x0000000000000203,  RVA = 0x00000000002D1000 --- 0x00000000012CFFFF
+	Entry Id( 2) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x00000000012D0000 --- 0x00000000012DFFFF
+	Entry Id( 3) =    7, STACK_MAX       ,  Page Count =    62,  Attributes = 0x5B,  Flags = 0x0000000000000203,  RVA = 0x00000000012E0000 --- 0x000000000131DFFF
+	Entry Id( 4) =    8, STACK_MIN       ,  Page Count =     2,  Attributes = 0x03,  Flags = 0x0000000000000203,  RVA = 0x000000000131E000 --- 0x000000000131FFFF
+	Entry Id( 5) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x0000000001320000 --- 0x000000000132FFFF
+	Entry Id( 6) =    4, TCS             ,  Page Count =     1,  Attributes = 0x03,  Flags = 0x0000000000000100,  RVA = 0x0000000001330000 --- 0x0000000001330FFF
+	Entry Id( 7) =    6, SSA             ,  Page Count =     2,  Attributes = 0x03,  Flags = 0x0000000000000203,  RVA = 0x0000000001331000 --- 0x0000000001332FFF
+	Entry Id( 8) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x0000000001333000 --- 0x0000000001342FFF
+	Entry Id( 9) =    5, TD              ,  Page Count =     2,  Attributes = 0x03,  Flags = 0x0000000000000203,  RVA = 0x0000000001343000 --- 0x0000000001344FFF
+	Entry Id(10) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x0000000001345000 --- 0x0000000001354FFF
+	Entry Id(11) =    7, STACK_MAX       ,  Page Count =    62,  Attributes = 0x43,  Flags = 0x0000000000000203,  RVA = 0x0000000001355000 --- 0x0000000001392FFF
+	Entry Id(12) =    8, STACK_MIN       ,  Page Count =     2,  Attributes = 0x03,  Flags = 0x0000000000000203,  RVA = 0x0000000001393000 --- 0x0000000001394FFF
+	Entry Id(13) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x0000000001395000 --- 0x00000000013A4FFF
+	Entry Id(14) =    4, TCS             ,  Page Count =     1,  Attributes = 0x03,  Flags = 0x0000000000000100,  RVA = 0x00000000013A5000 --- 0x00000000013A5FFF
+	Entry Id(15) =    6, SSA             ,  Page Count =     2,  Attributes = 0x03,  Flags = 0x0000000000000203,  RVA = 0x00000000013A6000 --- 0x00000000013A7FFF
+	Entry Id(16) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x00000000013A8000 --- 0x00000000013B7FFF
+	Entry Id(17) =    5, TD              ,  Page Count =     2,  Attributes = 0x03,  Flags = 0x0000000000000203,  RVA = 0x00000000013B8000 --- 0x00000000013B9FFF
+	Entry Id(18) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x00000000013BA000 --- 0x00000000013C9FFF
+	Entry Id(19) =    7, STACK_MAX       ,  Page Count =    62,  Attributes = 0x47,  Flags = 0x0000000000000203,  RVA = 0x00000000013CA000 --- 0x0000000001407FFF
+	Entry Id(20) =    8, STACK_MIN       ,  Page Count =     2,  Attributes = 0x07,  Flags = 0x0000000000000203,  RVA = 0x0000000001408000 --- 0x0000000001409FFF
+	Entry Id(21) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x000000000140A000 --- 0x0000000001419FFF
+	Entry Id(22) =    4, TCS             ,  Page Count =     1,  Attributes = 0x07,  Flags = 0x0000000000000100,  RVA = 0x000000000141A000 --- 0x000000000141AFFF
+	Entry Id(23) =    6, SSA             ,  Page Count =     2,  Attributes = 0x07,  Flags = 0x0000000000000203,  RVA = 0x000000000141B000 --- 0x000000000141CFFF
+	Entry Id(24) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x000000000141D000 --- 0x000000000142CFFF
+	Entry Id(25) =    5, TD              ,  Page Count =     2,  Attributes = 0x07,  Flags = 0x0000000000000203,  RVA = 0x000000000142D000 --- 0x000000000142EFFF
+	Entry Id(26) = 4105, THREAD_GROUP    ,  Entry Count =    8,  Load Times = 7,     LStep = 0x0000000000075000,  RVA = 0x000000000142F000 --- 0x0000000001761FFF
+	Entry Id(27) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x0000000001762000 --- 0x0000000001771FFF
+	Entry Id(28) =   17, STACK_DYN_MAX   ,  Page Count =    62,  Attributes = 0x48,  Flags = 0x0000000000000203,  RVA = 0x0000000001772000 --- 0x00000000017AFFFF
+	Entry Id(29) =   18, STACK_DYN_MIN   ,  Page Count =     2,  Attributes = 0x28,  Flags = 0x0000000000000203,  RVA = 0x00000000017B0000 --- 0x00000000017B1FFF
+	Entry Id(30) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x00000000017B2000 --- 0x00000000017C1FFF
+	Entry Id(31) =   14, TCS_DYN         ,  Page Count =     1,  Attributes = 0x28,  Flags = 0x0000000000000100,  RVA = 0x00000000017C2000 --- 0x00000000017C2FFF
+	Entry Id(32) =   16, SSA_DYN         ,  Page Count =     2,  Attributes = 0x28,  Flags = 0x0000000000000203,  RVA = 0x00000000017C3000 --- 0x00000000017C4FFF
+	Entry Id(33) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x00000000017C5000 --- 0x00000000017D4FFF
+	Entry Id(34) =   15, TD_DYN          ,  Page Count =     2,  Attributes = 0x28,  Flags = 0x0000000000000203,  RVA = 0x00000000017D5000 --- 0x00000000017D6FFF
+	Entry Id(35) = 4115, THREAD_GROUP_DYN,  Entry Count =    8,  Load Times = 8,     LStep = 0x0000000000075000,  RVA = 0x00000000017D7000 --- 0x0000000001B7EFFF
+[build_layout_entries manage_metadata.cpp:732] 
+Enclave: Size = 0x0000000001B7F000, Rounded Size = 0x0000000002000000
+	Entry Id( 0) =   10, GUARD           ,  Page Count =  1153,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x0000000001B7F000 --- 0x0000000001FFFFFF
+[do_update_global_data update_global_data.hxx:119] 
+Global Data:
+	Enclave size     = 0x0000000002000000
+	Heap Offset      = 0x00000000002D0000
+	Heap Size        = 0x0000000001000000
+	Reserved Mem Offset      = 0x0000000000000000
+	Reserved Mem Size        = 0x0000000000000000
+	Thread Policy    = 0x0000000000000001
+	Layout Table:
+	Entry Id( 1) =    1, HEAP_MIN        ,  Page Count =     1,  Attributes = 0x01,  Flags = 0x0000000000000203,  RVA = 0x00000000002D0000 --- 0x00000000002D1000
+	Entry Id( 2) =    2, HEAP_INIT       ,  Page Count =  4095,  Attributes = 0x19,  Flags = 0x0000000000000203,  RVA = 0x00000000002D1000 --- 0x00000000012D0000
+	Entry Id( 3) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x00000000012D0000 --- 0x00000000012E0000
+	Entry Id( 4) =    7, STACK_MAX       ,  Page Count =    62,  Attributes = 0x5B,  Flags = 0x0000000000000203,  RVA = 0x00000000012E0000 --- 0x000000000131E000
+	Entry Id( 5) =    8, STACK_MIN       ,  Page Count =     2,  Attributes = 0x03,  Flags = 0x0000000000000203,  RVA = 0x000000000131E000 --- 0x0000000001320000
+	Entry Id( 6) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x0000000001320000 --- 0x0000000001330000
+	Entry Id( 7) =    4, TCS             ,  Page Count =     1,  Attributes = 0x03,  Flags = 0x0000000000000100,  RVA = 0x0000000001330000 --- 0x0000000001331000
+	Entry Id( 8) =    6, SSA             ,  Page Count =     2,  Attributes = 0x03,  Flags = 0x0000000000000203,  RVA = 0x0000000001331000 --- 0x0000000001333000
+	Entry Id( 9) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x0000000001333000 --- 0x0000000001343000
+	Entry Id(10) =    5, TD              ,  Page Count =     2,  Attributes = 0x03,  Flags = 0x0000000000000203,  RVA = 0x0000000001343000 --- 0x0000000001345000
+	Entry Id(11) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x0000000001345000 --- 0x0000000001355000
+	Entry Id(12) =    7, STACK_MAX       ,  Page Count =    62,  Attributes = 0x43,  Flags = 0x0000000000000203,  RVA = 0x0000000001355000 --- 0x0000000001393000
+	Entry Id(13) =    8, STACK_MIN       ,  Page Count =     2,  Attributes = 0x03,  Flags = 0x0000000000000203,  RVA = 0x0000000001393000 --- 0x0000000001395000
+	Entry Id(14) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x0000000001395000 --- 0x00000000013A5000
+	Entry Id(15) =    4, TCS             ,  Page Count =     1,  Attributes = 0x03,  Flags = 0x0000000000000100,  RVA = 0x00000000013A5000 --- 0x00000000013A6000
+	Entry Id(16) =    6, SSA             ,  Page Count =     2,  Attributes = 0x03,  Flags = 0x0000000000000203,  RVA = 0x00000000013A6000 --- 0x00000000013A8000
+	Entry Id(17) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x00000000013A8000 --- 0x00000000013B8000
+	Entry Id(18) =    5, TD              ,  Page Count =     2,  Attributes = 0x03,  Flags = 0x0000000000000203,  RVA = 0x00000000013B8000 --- 0x00000000013BA000
+	Entry Id(19) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x00000000013BA000 --- 0x00000000013CA000
+	Entry Id(20) =    7, STACK_MAX       ,  Page Count =    62,  Attributes = 0x47,  Flags = 0x0000000000000203,  RVA = 0x00000000013CA000 --- 0x0000000001408000
+	Entry Id(21) =    8, STACK_MIN       ,  Page Count =     2,  Attributes = 0x07,  Flags = 0x0000000000000203,  RVA = 0x0000000001408000 --- 0x000000000140A000
+	Entry Id(22) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x000000000140A000 --- 0x000000000141A000
+	Entry Id(23) =    4, TCS             ,  Page Count =     1,  Attributes = 0x07,  Flags = 0x0000000000000100,  RVA = 0x000000000141A000 --- 0x000000000141B000
+	Entry Id(24) =    6, SSA             ,  Page Count =     2,  Attributes = 0x07,  Flags = 0x0000000000000203,  RVA = 0x000000000141B000 --- 0x000000000141D000
+	Entry Id(25) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x000000000141D000 --- 0x000000000142D000
+	Entry Id(26) =    5, TD              ,  Page Count =     2,  Attributes = 0x07,  Flags = 0x0000000000000203,  RVA = 0x000000000142D000 --- 0x000000000142F000
+	Entry Id(27) = 4105, THREAD_GROUP    ,  Entry Count =    8,  Load Times = 7,     LStep = 0x0000000000075000
+	Entry Id(28) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x0000000001762000 --- 0x0000000001772000
+	Entry Id(29) =   17, STACK_DYN_MAX   ,  Page Count =    62,  Attributes = 0x48,  Flags = 0x0000000000000203,  RVA = 0x0000000001772000 --- 0x00000000017B0000
+	Entry Id(30) =   18, STACK_DYN_MIN   ,  Page Count =     2,  Attributes = 0x28,  Flags = 0x0000000000000203,  RVA = 0x00000000017B0000 --- 0x00000000017B2000
+	Entry Id(31) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x00000000017B2000 --- 0x00000000017C2000
+	Entry Id(32) =   14, TCS_DYN         ,  Page Count =     1,  Attributes = 0x28,  Flags = 0x0000000000000100,  RVA = 0x00000000017C2000 --- 0x00000000017C3000
+	Entry Id(33) =   16, SSA_DYN         ,  Page Count =     2,  Attributes = 0x28,  Flags = 0x0000000000000203,  RVA = 0x00000000017C3000 --- 0x00000000017C5000
+	Entry Id(34) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x00000000017C5000 --- 0x00000000017D5000
+	Entry Id(35) =   15, TD_DYN          ,  Page Count =     2,  Attributes = 0x28,  Flags = 0x0000000000000203,  RVA = 0x00000000017D5000 --- 0x00000000017D7000
+	Entry Id(36) = 4115, THREAD_GROUP_DYN,  Entry Count =    8,  Load Times = 8,     LStep = 0x0000000000075000
+	Entry Id(37) =   10, GUARD           ,  Page Count =  1153,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x0000000001B7F000 --- 0x0000000002000000
+[get_section elfparser.cpp:83] section [0] : sh_addr = 0, sh_size = 0, sh_offset = 0, sh_name = 0
+[get_section elfparser.cpp:83] section [1] .interp: sh_addr = 350, sh_size = 1c, sh_offset = 350, sh_name = 1b
+[get_section elfparser.cpp:83] section [2] .note.gnu.property: sh_addr = 370, sh_size = 30, sh_offset = 370, sh_name = 23
+[get_section elfparser.cpp:83] section [3] .note.gnu.build-id: sh_addr = 3a0, sh_size = 24, sh_offset = 3a0, sh_name = 36
+[get_section elfparser.cpp:83] section [4] .gnu.hash: sh_addr = 3c8, sh_size = 28, sh_offset = 3c8, sh_name = 49
+[get_section elfparser.cpp:83] section [5] .dynsym: sh_addr = 3f0, sh_size = 78, sh_offset = 3f0, sh_name = 53
+[get_section elfparser.cpp:83] section [6] .dynstr: sh_addr = 468, sh_size = 43, sh_offset = 468, sh_name = 5b
+[get_section elfparser.cpp:83] section [7] .gnu.version: sh_addr = 4ac, sh_size = a, sh_offset = 4ac, sh_name = 63
+[get_section elfparser.cpp:83] section [8] .gnu.version_d: sh_addr = 4b8, sh_size = 38, sh_offset = 4b8, sh_name = 70
+[get_section elfparser.cpp:83] section [9] .rela.dyn: sh_addr = 4f0, sh_size = 3c7c8, sh_offset = 4f0, sh_name = 7f
+[get_section elfparser.cpp:83] section [10] .plt: sh_addr = 3d000, sh_size = 10, sh_offset = 3d000, sh_name = 89
+[get_reloc_entry_offset elfparser.cpp:878] found section '.plt' - offset 0x3d000, size 0x10
+[get_section elfparser.cpp:83] section [0] : sh_addr = 0, sh_size = 0, sh_offset = 0, sh_name = 0
+[get_section elfparser.cpp:83] section [1] .interp: sh_addr = 350, sh_size = 1c, sh_offset = 350, sh_name = 1b
+[get_section elfparser.cpp:83] section [2] .note.gnu.property: sh_addr = 370, sh_size = 30, sh_offset = 370, sh_name = 23
+[get_section elfparser.cpp:83] section [3] .note.gnu.build-id: sh_addr = 3a0, sh_size = 24, sh_offset = 3a0, sh_name = 36
+[get_section elfparser.cpp:83] section [4] .gnu.hash: sh_addr = 3c8, sh_size = 28, sh_offset = 3c8, sh_name = 49
+[get_section elfparser.cpp:83] section [5] .dynsym: sh_addr = 3f0, sh_size = 78, sh_offset = 3f0, sh_name = 53
+[get_section elfparser.cpp:83] section [6] .dynstr: sh_addr = 468, sh_size = 43, sh_offset = 468, sh_name = 5b
+[get_section elfparser.cpp:83] section [7] .gnu.version: sh_addr = 4ac, sh_size = a, sh_offset = 4ac, sh_name = 63
+[get_section elfparser.cpp:83] section [8] .gnu.version_d: sh_addr = 4b8, sh_size = 38, sh_offset = 4b8, sh_name = 70
+[get_section elfparser.cpp:83] section [9] .rela.dyn: sh_addr = 4f0, sh_size = 3c7c8, sh_offset = 4f0, sh_name = 7f
+[get_section elfparser.cpp:83] section [10] .plt: sh_addr = 3d000, sh_size = 10, sh_offset = 3d000, sh_name = 89
+[get_section elfparser.cpp:83] section [11] .plt.got: sh_addr = 3d010, sh_size = 10, sh_offset = 3d010, sh_name = 8e
+[get_reloc_entry_offset elfparser.cpp:878] found section '.plt.got' - offset 0x3d010, size 0x10
+[get_section elfparser.cpp:83] section [0] : sh_addr = 0, sh_size = 0, sh_offset = 0, sh_name = 0
+[get_section elfparser.cpp:83] section [1] .interp: sh_addr = 350, sh_size = 1c, sh_offset = 350, sh_name = 1b
+[get_section elfparser.cpp:83] section [2] .note.gnu.property: sh_addr = 370, sh_size = 30, sh_offset = 370, sh_name = 23
+[get_section elfparser.cpp:83] section [3] .note.gnu.build-id: sh_addr = 3a0, sh_size = 24, sh_offset = 3a0, sh_name = 36
+[get_section elfparser.cpp:83] section [4] .gnu.hash: sh_addr = 3c8, sh_size = 28, sh_offset = 3c8, sh_name = 49
+[get_section elfparser.cpp:83] section [5] .dynsym: sh_addr = 3f0, sh_size = 78, sh_offset = 3f0, sh_name = 53
+[get_section elfparser.cpp:83] section [6] .dynstr: sh_addr = 468, sh_size = 43, sh_offset = 468, sh_name = 5b
+[get_section elfparser.cpp:83] section [7] .gnu.version: sh_addr = 4ac, sh_size = a, sh_offset = 4ac, sh_name = 63
+[get_section elfparser.cpp:83] section [8] .gnu.version_d: sh_addr = 4b8, sh_size = 38, sh_offset = 4b8, sh_name = 70
+[get_section elfparser.cpp:83] section [9] .rela.dyn: sh_addr = 4f0, sh_size = 3c7c8, sh_offset = 4f0, sh_name = 7f
+[get_section elfparser.cpp:83] section [10] .plt: sh_addr = 3d000, sh_size = 10, sh_offset = 3d000, sh_name = 89
+[get_section elfparser.cpp:83] section [11] .plt.got: sh_addr = 3d010, sh_size = 10, sh_offset = 3d010, sh_name = 8e
+[get_section elfparser.cpp:83] section [12] .text: sh_addr = 3e000, sh_size = 1b9b6d, sh_offset = 3e000, sh_name = 97
+[get_reloc_entry_offset elfparser.cpp:878] found section '.text' - offset 0x3e000, size 0x1b9b6d
+[get_section elfparser.cpp:83] section [0] : sh_addr = 0, sh_size = 0, sh_offset = 0, sh_name = 0
+[get_section elfparser.cpp:83] section [1] .interp: sh_addr = 350, sh_size = 1c, sh_offset = 350, sh_name = 1b
+[get_section elfparser.cpp:83] section [2] .note.gnu.property: sh_addr = 370, sh_size = 30, sh_offset = 370, sh_name = 23
+[get_section elfparser.cpp:83] section [3] .note.gnu.build-id: sh_addr = 3a0, sh_size = 24, sh_offset = 3a0, sh_name = 36
+[get_section elfparser.cpp:83] section [4] .gnu.hash: sh_addr = 3c8, sh_size = 28, sh_offset = 3c8, sh_name = 49
+[get_section elfparser.cpp:83] section [5] .dynsym: sh_addr = 3f0, sh_size = 78, sh_offset = 3f0, sh_name = 53
+[get_section elfparser.cpp:83] section [6] .dynstr: sh_addr = 468, sh_size = 43, sh_offset = 468, sh_name = 5b
+[get_section elfparser.cpp:83] section [7] .gnu.version: sh_addr = 4ac, sh_size = a, sh_offset = 4ac, sh_name = 63
+[get_section elfparser.cpp:83] section [8] .gnu.version_d: sh_addr = 4b8, sh_size = 38, sh_offset = 4b8, sh_name = 70
+[get_section elfparser.cpp:83] section [9] .rela.dyn: sh_addr = 4f0, sh_size = 3c7c8, sh_offset = 4f0, sh_name = 7f
+[get_section elfparser.cpp:83] section [10] .plt: sh_addr = 3d000, sh_size = 10, sh_offset = 3d000, sh_name = 89
+[get_section elfparser.cpp:83] section [11] .plt.got: sh_addr = 3d010, sh_size = 10, sh_offset = 3d010, sh_name = 8e
+[get_section elfparser.cpp:83] section [12] .text: sh_addr = 3e000, sh_size = 1b9b6d, sh_offset = 3e000, sh_name = 97
+[get_section elfparser.cpp:83] section [13] Q6A8dc14f40efc4288a03b32cba4e: sh_addr = 1f7b6d, sh_size = 5, sh_offset = 1f7b6d, sh_name = 9d
+[get_reloc_entry_offset elfparser.cpp:878] found section 'Q6A8dc14f40efc4288a03b32cba4e' - offset 0x1f7b6d, size 0x5
+[get_section elfparser.cpp:83] section [0] : sh_addr = 0, sh_size = 0, sh_offset = 0, sh_name = 0
+[get_section elfparser.cpp:83] section [1] .interp: sh_addr = 350, sh_size = 1c, sh_offset = 350, sh_name = 1b
+[get_section elfparser.cpp:83] section [2] .note.gnu.property: sh_addr = 370, sh_size = 30, sh_offset = 370, sh_name = 23
+[get_section elfparser.cpp:83] section [3] .note.gnu.build-id: sh_addr = 3a0, sh_size = 24, sh_offset = 3a0, sh_name = 36
+[get_section elfparser.cpp:83] section [4] .gnu.hash: sh_addr = 3c8, sh_size = 28, sh_offset = 3c8, sh_name = 49
+[get_section elfparser.cpp:83] section [5] .dynsym: sh_addr = 3f0, sh_size = 78, sh_offset = 3f0, sh_name = 53
+[get_section elfparser.cpp:83] section [6] .dynstr: sh_addr = 468, sh_size = 43, sh_offset = 468, sh_name = 5b
+[get_section elfparser.cpp:83] section [7] .gnu.version: sh_addr = 4ac, sh_size = a, sh_offset = 4ac, sh_name = 63
+[get_section elfparser.cpp:83] section [8] .gnu.version_d: sh_addr = 4b8, sh_size = 38, sh_offset = 4b8, sh_name = 70
+[get_section elfparser.cpp:83] section [9] .rela.dyn: sh_addr = 4f0, sh_size = 3c7c8, sh_offset = 4f0, sh_name = 7f
+[get_section elfparser.cpp:83] section [10] .plt: sh_addr = 3d000, sh_size = 10, sh_offset = 3d000, sh_name = 89
+[get_section elfparser.cpp:83] section [11] .plt.got: sh_addr = 3d010, sh_size = 10, sh_offset = 3d010, sh_name = 8e
+[get_section elfparser.cpp:83] section [12] .text: sh_addr = 3e000, sh_size = 1b9b6d, sh_offset = 3e000, sh_name = 97
+[get_section elfparser.cpp:83] section [13] Q6A8dc14f40efc4288a03b32cba4e: sh_addr = 1f7b6d, sh_size = 5, sh_offset = 1f7b6d, sh_name = 9d
+[get_section elfparser.cpp:83] section [14] .nipx: sh_addr = 1f7b72, sh_size = d3f, sh_offset = 1f7b72, sh_name = bb
+[get_reloc_entry_offset elfparser.cpp:878] found section '.nipx' - offset 0x1f7b72, size 0xd3f
+[build_image /home/pigeon/linux-sgx/psw/urts/loader.cpp:670] 
+	Metadata Version = 0x0000000200000004
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =    1, HEAP_MIN        , Page Count =     1, Attributes = 0x01, Flags = 0x0000000000000203, RVA = 0x00000000002D0000 -> RVA = 0x00000000002D0000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =    2, HEAP_INIT       , Page Count =  4095, Attributes = 0x19, Flags = 0x0000000000000203, RVA = 0x00000000002D1000 -> RVA = 0x00000000002D1000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000012D0000 -> RVA = 0x00000000012D0000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =    7, STACK_MAX       , Page Count =    62, Attributes = 0x5B, Flags = 0x0000000000000203, RVA = 0x00000000012E0000 -> RVA = 0x00000000012E0000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =    8, STACK_MIN       , Page Count =     2, Attributes = 0x03, Flags = 0x0000000000000203, RVA = 0x000000000131E000 -> RVA = 0x000000000131E000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x0000000001320000 -> RVA = 0x0000000001320000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =    4, TCS             , Page Count =     1, Attributes = 0x03, Flags = 0x0000000000000100, RVA = 0x0000000001330000 -> RVA = 0x0000000001330000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =    6, SSA             , Page Count =     2, Attributes = 0x03, Flags = 0x0000000000000203, RVA = 0x0000000001331000 -> RVA = 0x0000000001331000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x0000000001333000 -> RVA = 0x0000000001333000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =    5, TD              , Page Count =     2, Attributes = 0x03, Flags = 0x0000000000000203, RVA = 0x0000000001343000 -> RVA = 0x0000000001343000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x0000000001345000 -> RVA = 0x0000000001345000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =    7, STACK_MAX       , Page Count =    62, Attributes = 0x43, Flags = 0x0000000000000203, RVA = 0x0000000001355000 -> RVA = 0x0000000001355000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =    8, STACK_MIN       , Page Count =     2, Attributes = 0x03, Flags = 0x0000000000000203, RVA = 0x0000000001393000 -> RVA = 0x0000000001393000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x0000000001395000 -> RVA = 0x0000000001395000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =    4, TCS             , Page Count =     1, Attributes = 0x03, Flags = 0x0000000000000100, RVA = 0x00000000013A5000 -> RVA = 0x00000000013A5000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =    6, SSA             , Page Count =     2, Attributes = 0x03, Flags = 0x0000000000000203, RVA = 0x00000000013A6000 -> RVA = 0x00000000013A6000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000013A8000 -> RVA = 0x00000000013A8000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =    5, TD              , Page Count =     2, Attributes = 0x03, Flags = 0x0000000000000203, RVA = 0x00000000013B8000 -> RVA = 0x00000000013B8000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000013BA000 -> RVA = 0x00000000013BA000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =    7, STACK_MAX       , Page Count =    62, Attributes = 0x47, Flags = 0x0000000000000203, RVA = 0x00000000013CA000 -> RVA = 0x00000000013CA000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =    8, STACK_MIN       , Page Count =     2, Attributes = 0x07, Flags = 0x0000000000000203, RVA = 0x0000000001408000 -> RVA = 0x0000000001408000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x000000000140A000 -> RVA = 0x000000000140A000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =    4, TCS             , Page Count =     1, Attributes = 0x07, Flags = 0x0000000000000100, RVA = 0x000000000141A000 -> RVA = 0x000000000141A000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =    6, SSA             , Page Count =     2, Attributes = 0x07, Flags = 0x0000000000000203, RVA = 0x000000000141B000 -> RVA = 0x000000000141B000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x000000000141D000 -> RVA = 0x000000000141D000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =    5, TD              , Page Count =     2, Attributes = 0x07, Flags = 0x0000000000000203, RVA = 0x000000000142D000 -> RVA = 0x000000000142D000
+build_contexts, step = 0x0000000000000000
+	Entry Id( 0) = 4105, THREAD_GROUP    , Entry Count =    8, Load Times = 7,    LStep = 0x0000000000075000
+build_contexts, step = 0x0000000000075000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000013BA000 -> RVA = 0x000000000142F000
+build_contexts, step = 0x0000000000075000
+	build_context
+	Entry Id     =    7, STACK_MAX       , Page Count =    62, Attributes = 0x47, Flags = 0x0000000000000203, RVA = 0x00000000013CA000 -> RVA = 0x000000000143F000
+build_contexts, step = 0x0000000000075000
+	build_context
+	Entry Id     =    8, STACK_MIN       , Page Count =     2, Attributes = 0x07, Flags = 0x0000000000000203, RVA = 0x0000000001408000 -> RVA = 0x000000000147D000
+build_contexts, step = 0x0000000000075000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x000000000140A000 -> RVA = 0x000000000147F000
+build_contexts, step = 0x0000000000075000
+	build_context
+	Entry Id     =    4, TCS             , Page Count =     1, Attributes = 0x07, Flags = 0x0000000000000100, RVA = 0x000000000141A000 -> RVA = 0x000000000148F000
+build_contexts, step = 0x0000000000075000
+	build_context
+	Entry Id     =    6, SSA             , Page Count =     2, Attributes = 0x07, Flags = 0x0000000000000203, RVA = 0x000000000141B000 -> RVA = 0x0000000001490000
+build_contexts, step = 0x0000000000075000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x000000000141D000 -> RVA = 0x0000000001492000
+build_contexts, step = 0x0000000000075000
+	build_context
+	Entry Id     =    5, TD              , Page Count =     2, Attributes = 0x07, Flags = 0x0000000000000203, RVA = 0x000000000142D000 -> RVA = 0x00000000014A2000
+build_contexts, step = 0x00000000000EA000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000013BA000 -> RVA = 0x00000000014A4000
+build_contexts, step = 0x00000000000EA000
+	build_context
+	Entry Id     =    7, STACK_MAX       , Page Count =    62, Attributes = 0x47, Flags = 0x0000000000000203, RVA = 0x00000000013CA000 -> RVA = 0x00000000014B4000
+build_contexts, step = 0x00000000000EA000
+	build_context
+	Entry Id     =    8, STACK_MIN       , Page Count =     2, Attributes = 0x07, Flags = 0x0000000000000203, RVA = 0x0000000001408000 -> RVA = 0x00000000014F2000
+build_contexts, step = 0x00000000000EA000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x000000000140A000 -> RVA = 0x00000000014F4000
+build_contexts, step = 0x00000000000EA000
+	build_context
+	Entry Id     =    4, TCS             , Page Count =     1, Attributes = 0x07, Flags = 0x0000000000000100, RVA = 0x000000000141A000 -> RVA = 0x0000000001504000
+build_contexts, step = 0x00000000000EA000
+	build_context
+	Entry Id     =    6, SSA             , Page Count =     2, Attributes = 0x07, Flags = 0x0000000000000203, RVA = 0x000000000141B000 -> RVA = 0x0000000001505000
+build_contexts, step = 0x00000000000EA000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x000000000141D000 -> RVA = 0x0000000001507000
+build_contexts, step = 0x00000000000EA000
+	build_context
+	Entry Id     =    5, TD              , Page Count =     2, Attributes = 0x07, Flags = 0x0000000000000203, RVA = 0x000000000142D000 -> RVA = 0x0000000001517000
+build_contexts, step = 0x000000000015F000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000013BA000 -> RVA = 0x0000000001519000
+build_contexts, step = 0x000000000015F000
+	build_context
+	Entry Id     =    7, STACK_MAX       , Page Count =    62, Attributes = 0x47, Flags = 0x0000000000000203, RVA = 0x00000000013CA000 -> RVA = 0x0000000001529000
+build_contexts, step = 0x000000000015F000
+	build_context
+	Entry Id     =    8, STACK_MIN       , Page Count =     2, Attributes = 0x07, Flags = 0x0000000000000203, RVA = 0x0000000001408000 -> RVA = 0x0000000001567000
+build_contexts, step = 0x000000000015F000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x000000000140A000 -> RVA = 0x0000000001569000
+build_contexts, step = 0x000000000015F000
+	build_context
+	Entry Id     =    4, TCS             , Page Count =     1, Attributes = 0x07, Flags = 0x0000000000000100, RVA = 0x000000000141A000 -> RVA = 0x0000000001579000
+build_contexts, step = 0x000000000015F000
+	build_context
+	Entry Id     =    6, SSA             , Page Count =     2, Attributes = 0x07, Flags = 0x0000000000000203, RVA = 0x000000000141B000 -> RVA = 0x000000000157A000
+build_contexts, step = 0x000000000015F000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x000000000141D000 -> RVA = 0x000000000157C000
+build_contexts, step = 0x000000000015F000
+	build_context
+	Entry Id     =    5, TD              , Page Count =     2, Attributes = 0x07, Flags = 0x0000000000000203, RVA = 0x000000000142D000 -> RVA = 0x000000000158C000
+build_contexts, step = 0x00000000001D4000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000013BA000 -> RVA = 0x000000000158E000
+build_contexts, step = 0x00000000001D4000
+	build_context
+	Entry Id     =    7, STACK_MAX       , Page Count =    62, Attributes = 0x47, Flags = 0x0000000000000203, RVA = 0x00000000013CA000 -> RVA = 0x000000000159E000
+build_contexts, step = 0x00000000001D4000
+	build_context
+	Entry Id     =    8, STACK_MIN       , Page Count =     2, Attributes = 0x07, Flags = 0x0000000000000203, RVA = 0x0000000001408000 -> RVA = 0x00000000015DC000
+build_contexts, step = 0x00000000001D4000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x000000000140A000 -> RVA = 0x00000000015DE000
+build_contexts, step = 0x00000000001D4000
+	build_context
+	Entry Id     =    4, TCS             , Page Count =     1, Attributes = 0x07, Flags = 0x0000000000000100, RVA = 0x000000000141A000 -> RVA = 0x00000000015EE000
+build_contexts, step = 0x00000000001D4000
+	build_context
+	Entry Id     =    6, SSA             , Page Count =     2, Attributes = 0x07, Flags = 0x0000000000000203, RVA = 0x000000000141B000 -> RVA = 0x00000000015EF000
+build_contexts, step = 0x00000000001D4000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x000000000141D000 -> RVA = 0x00000000015F1000
+build_contexts, step = 0x00000000001D4000
+	build_context
+	Entry Id     =    5, TD              , Page Count =     2, Attributes = 0x07, Flags = 0x0000000000000203, RVA = 0x000000000142D000 -> RVA = 0x0000000001601000
+build_contexts, step = 0x0000000000249000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000013BA000 -> RVA = 0x0000000001603000
+build_contexts, step = 0x0000000000249000
+	build_context
+	Entry Id     =    7, STACK_MAX       , Page Count =    62, Attributes = 0x47, Flags = 0x0000000000000203, RVA = 0x00000000013CA000 -> RVA = 0x0000000001613000
+build_contexts, step = 0x0000000000249000
+	build_context
+	Entry Id     =    8, STACK_MIN       , Page Count =     2, Attributes = 0x07, Flags = 0x0000000000000203, RVA = 0x0000000001408000 -> RVA = 0x0000000001651000
+build_contexts, step = 0x0000000000249000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x000000000140A000 -> RVA = 0x0000000001653000
+build_contexts, step = 0x0000000000249000
+	build_context
+	Entry Id     =    4, TCS             , Page Count =     1, Attributes = 0x07, Flags = 0x0000000000000100, RVA = 0x000000000141A000 -> RVA = 0x0000000001663000
+build_contexts, step = 0x0000000000249000
+	build_context
+	Entry Id     =    6, SSA             , Page Count =     2, Attributes = 0x07, Flags = 0x0000000000000203, RVA = 0x000000000141B000 -> RVA = 0x0000000001664000
+build_contexts, step = 0x0000000000249000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x000000000141D000 -> RVA = 0x0000000001666000
+build_contexts, step = 0x0000000000249000
+	build_context
+	Entry Id     =    5, TD              , Page Count =     2, Attributes = 0x07, Flags = 0x0000000000000203, RVA = 0x000000000142D000 -> RVA = 0x0000000001676000
+build_contexts, step = 0x00000000002BE000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000013BA000 -> RVA = 0x0000000001678000
+build_contexts, step = 0x00000000002BE000
+	build_context
+	Entry Id     =    7, STACK_MAX       , Page Count =    62, Attributes = 0x47, Flags = 0x0000000000000203, RVA = 0x00000000013CA000 -> RVA = 0x0000000001688000
+build_contexts, step = 0x00000000002BE000
+	build_context
+	Entry Id     =    8, STACK_MIN       , Page Count =     2, Attributes = 0x07, Flags = 0x0000000000000203, RVA = 0x0000000001408000 -> RVA = 0x00000000016C6000
+build_contexts, step = 0x00000000002BE000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x000000000140A000 -> RVA = 0x00000000016C8000
+build_contexts, step = 0x00000000002BE000
+	build_context
+	Entry Id     =    4, TCS             , Page Count =     1, Attributes = 0x07, Flags = 0x0000000000000100, RVA = 0x000000000141A000 -> RVA = 0x00000000016D8000
+build_contexts, step = 0x00000000002BE000
+	build_context
+	Entry Id     =    6, SSA             , Page Count =     2, Attributes = 0x07, Flags = 0x0000000000000203, RVA = 0x000000000141B000 -> RVA = 0x00000000016D9000
+build_contexts, step = 0x00000000002BE000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x000000000141D000 -> RVA = 0x00000000016DB000
+build_contexts, step = 0x00000000002BE000
+	build_context
+	Entry Id     =    5, TD              , Page Count =     2, Attributes = 0x07, Flags = 0x0000000000000203, RVA = 0x000000000142D000 -> RVA = 0x00000000016EB000
+build_contexts, step = 0x0000000000333000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000013BA000 -> RVA = 0x00000000016ED000
+build_contexts, step = 0x0000000000333000
+	build_context
+	Entry Id     =    7, STACK_MAX       , Page Count =    62, Attributes = 0x47, Flags = 0x0000000000000203, RVA = 0x00000000013CA000 -> RVA = 0x00000000016FD000
+build_contexts, step = 0x0000000000333000
+	build_context
+	Entry Id     =    8, STACK_MIN       , Page Count =     2, Attributes = 0x07, Flags = 0x0000000000000203, RVA = 0x0000000001408000 -> RVA = 0x000000000173B000
+build_contexts, step = 0x0000000000333000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x000000000140A000 -> RVA = 0x000000000173D000
+build_contexts, step = 0x0000000000333000
+	build_context
+	Entry Id     =    4, TCS             , Page Count =     1, Attributes = 0x07, Flags = 0x0000000000000100, RVA = 0x000000000141A000 -> RVA = 0x000000000174D000
+build_contexts, step = 0x0000000000333000
+	build_context
+	Entry Id     =    6, SSA             , Page Count =     2, Attributes = 0x07, Flags = 0x0000000000000203, RVA = 0x000000000141B000 -> RVA = 0x000000000174E000
+build_contexts, step = 0x0000000000333000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x000000000141D000 -> RVA = 0x0000000001750000
+build_contexts, step = 0x0000000000333000
+	build_context
+	Entry Id     =    5, TD              , Page Count =     2, Attributes = 0x07, Flags = 0x0000000000000203, RVA = 0x000000000142D000 -> RVA = 0x0000000001760000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x0000000001762000 -> RVA = 0x0000000001762000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =   17, STACK_DYN_MAX   , Page Count =    62, Attributes = 0x48, Flags = 0x0000000000000203, RVA = 0x0000000001772000 -> RVA = 0x0000000001772000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =   18, STACK_DYN_MIN   , Page Count =     2, Attributes = 0x28, Flags = 0x0000000000000203, RVA = 0x00000000017B0000 -> RVA = 0x00000000017B0000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000017B2000 -> RVA = 0x00000000017B2000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =   14, TCS_DYN         , Page Count =     1, Attributes = 0x28, Flags = 0x0000000000000100, RVA = 0x00000000017C2000 -> RVA = 0x00000000017C2000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =   16, SSA_DYN         , Page Count =     2, Attributes = 0x28, Flags = 0x0000000000000203, RVA = 0x00000000017C3000 -> RVA = 0x00000000017C3000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000017C5000 -> RVA = 0x00000000017C5000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =   15, TD_DYN          , Page Count =     2, Attributes = 0x28, Flags = 0x0000000000000203, RVA = 0x00000000017D5000 -> RVA = 0x00000000017D5000
+build_contexts, step = 0x0000000000000000
+	Entry Id( 0) = 4115, THREAD_GROUP_DYN, Entry Count =    8, Load Times = 8,    LStep = 0x0000000000075000
+build_contexts, step = 0x0000000000075000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x0000000001762000 -> RVA = 0x00000000017D7000
+build_contexts, step = 0x0000000000075000
+	build_context
+	Entry Id     =   17, STACK_DYN_MAX   , Page Count =    62, Attributes = 0x48, Flags = 0x0000000000000203, RVA = 0x0000000001772000 -> RVA = 0x00000000017E7000
+build_contexts, step = 0x0000000000075000
+	build_context
+	Entry Id     =   18, STACK_DYN_MIN   , Page Count =     2, Attributes = 0x28, Flags = 0x0000000000000203, RVA = 0x00000000017B0000 -> RVA = 0x0000000001825000
+build_contexts, step = 0x0000000000075000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000017B2000 -> RVA = 0x0000000001827000
+build_contexts, step = 0x0000000000075000
+	build_context
+	Entry Id     =   14, TCS_DYN         , Page Count =     1, Attributes = 0x28, Flags = 0x0000000000000100, RVA = 0x00000000017C2000 -> RVA = 0x0000000001837000
+build_contexts, step = 0x0000000000075000
+	build_context
+	Entry Id     =   16, SSA_DYN         , Page Count =     2, Attributes = 0x28, Flags = 0x0000000000000203, RVA = 0x00000000017C3000 -> RVA = 0x0000000001838000
+build_contexts, step = 0x0000000000075000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000017C5000 -> RVA = 0x000000000183A000
+build_contexts, step = 0x0000000000075000
+	build_context
+	Entry Id     =   15, TD_DYN          , Page Count =     2, Attributes = 0x28, Flags = 0x0000000000000203, RVA = 0x00000000017D5000 -> RVA = 0x000000000184A000
+build_contexts, step = 0x00000000000EA000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x0000000001762000 -> RVA = 0x000000000184C000
+build_contexts, step = 0x00000000000EA000
+	build_context
+	Entry Id     =   17, STACK_DYN_MAX   , Page Count =    62, Attributes = 0x48, Flags = 0x0000000000000203, RVA = 0x0000000001772000 -> RVA = 0x000000000185C000
+build_contexts, step = 0x00000000000EA000
+	build_context
+	Entry Id     =   18, STACK_DYN_MIN   , Page Count =     2, Attributes = 0x28, Flags = 0x0000000000000203, RVA = 0x00000000017B0000 -> RVA = 0x000000000189A000
+build_contexts, step = 0x00000000000EA000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000017B2000 -> RVA = 0x000000000189C000
+build_contexts, step = 0x00000000000EA000
+	build_context
+	Entry Id     =   14, TCS_DYN         , Page Count =     1, Attributes = 0x28, Flags = 0x0000000000000100, RVA = 0x00000000017C2000 -> RVA = 0x00000000018AC000
+build_contexts, step = 0x00000000000EA000
+	build_context
+	Entry Id     =   16, SSA_DYN         , Page Count =     2, Attributes = 0x28, Flags = 0x0000000000000203, RVA = 0x00000000017C3000 -> RVA = 0x00000000018AD000
+build_contexts, step = 0x00000000000EA000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000017C5000 -> RVA = 0x00000000018AF000
+build_contexts, step = 0x00000000000EA000
+	build_context
+	Entry Id     =   15, TD_DYN          , Page Count =     2, Attributes = 0x28, Flags = 0x0000000000000203, RVA = 0x00000000017D5000 -> RVA = 0x00000000018BF000
+build_contexts, step = 0x000000000015F000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x0000000001762000 -> RVA = 0x00000000018C1000
+build_contexts, step = 0x000000000015F000
+	build_context
+	Entry Id     =   17, STACK_DYN_MAX   , Page Count =    62, Attributes = 0x48, Flags = 0x0000000000000203, RVA = 0x0000000001772000 -> RVA = 0x00000000018D1000
+build_contexts, step = 0x000000000015F000
+	build_context
+	Entry Id     =   18, STACK_DYN_MIN   , Page Count =     2, Attributes = 0x28, Flags = 0x0000000000000203, RVA = 0x00000000017B0000 -> RVA = 0x000000000190F000
+build_contexts, step = 0x000000000015F000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000017B2000 -> RVA = 0x0000000001911000
+build_contexts, step = 0x000000000015F000
+	build_context
+	Entry Id     =   14, TCS_DYN         , Page Count =     1, Attributes = 0x28, Flags = 0x0000000000000100, RVA = 0x00000000017C2000 -> RVA = 0x0000000001921000
+build_contexts, step = 0x000000000015F000
+	build_context
+	Entry Id     =   16, SSA_DYN         , Page Count =     2, Attributes = 0x28, Flags = 0x0000000000000203, RVA = 0x00000000017C3000 -> RVA = 0x0000000001922000
+build_contexts, step = 0x000000000015F000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000017C5000 -> RVA = 0x0000000001924000
+build_contexts, step = 0x000000000015F000
+	build_context
+	Entry Id     =   15, TD_DYN          , Page Count =     2, Attributes = 0x28, Flags = 0x0000000000000203, RVA = 0x00000000017D5000 -> RVA = 0x0000000001934000
+build_contexts, step = 0x00000000001D4000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x0000000001762000 -> RVA = 0x0000000001936000
+build_contexts, step = 0x00000000001D4000
+	build_context
+	Entry Id     =   17, STACK_DYN_MAX   , Page Count =    62, Attributes = 0x48, Flags = 0x0000000000000203, RVA = 0x0000000001772000 -> RVA = 0x0000000001946000
+build_contexts, step = 0x00000000001D4000
+	build_context
+	Entry Id     =   18, STACK_DYN_MIN   , Page Count =     2, Attributes = 0x28, Flags = 0x0000000000000203, RVA = 0x00000000017B0000 -> RVA = 0x0000000001984000
+build_contexts, step = 0x00000000001D4000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000017B2000 -> RVA = 0x0000000001986000
+build_contexts, step = 0x00000000001D4000
+	build_context
+	Entry Id     =   14, TCS_DYN         , Page Count =     1, Attributes = 0x28, Flags = 0x0000000000000100, RVA = 0x00000000017C2000 -> RVA = 0x0000000001996000
+build_contexts, step = 0x00000000001D4000
+	build_context
+	Entry Id     =   16, SSA_DYN         , Page Count =     2, Attributes = 0x28, Flags = 0x0000000000000203, RVA = 0x00000000017C3000 -> RVA = 0x0000000001997000
+build_contexts, step = 0x00000000001D4000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000017C5000 -> RVA = 0x0000000001999000
+build_contexts, step = 0x00000000001D4000
+	build_context
+	Entry Id     =   15, TD_DYN          , Page Count =     2, Attributes = 0x28, Flags = 0x0000000000000203, RVA = 0x00000000017D5000 -> RVA = 0x00000000019A9000
+build_contexts, step = 0x0000000000249000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x0000000001762000 -> RVA = 0x00000000019AB000
+build_contexts, step = 0x0000000000249000
+	build_context
+	Entry Id     =   17, STACK_DYN_MAX   , Page Count =    62, Attributes = 0x48, Flags = 0x0000000000000203, RVA = 0x0000000001772000 -> RVA = 0x00000000019BB000
+build_contexts, step = 0x0000000000249000
+	build_context
+	Entry Id     =   18, STACK_DYN_MIN   , Page Count =     2, Attributes = 0x28, Flags = 0x0000000000000203, RVA = 0x00000000017B0000 -> RVA = 0x00000000019F9000
+build_contexts, step = 0x0000000000249000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000017B2000 -> RVA = 0x00000000019FB000
+build_contexts, step = 0x0000000000249000
+	build_context
+	Entry Id     =   14, TCS_DYN         , Page Count =     1, Attributes = 0x28, Flags = 0x0000000000000100, RVA = 0x00000000017C2000 -> RVA = 0x0000000001A0B000
+build_contexts, step = 0x0000000000249000
+	build_context
+	Entry Id     =   16, SSA_DYN         , Page Count =     2, Attributes = 0x28, Flags = 0x0000000000000203, RVA = 0x00000000017C3000 -> RVA = 0x0000000001A0C000
+build_contexts, step = 0x0000000000249000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000017C5000 -> RVA = 0x0000000001A0E000
+build_contexts, step = 0x0000000000249000
+	build_context
+	Entry Id     =   15, TD_DYN          , Page Count =     2, Attributes = 0x28, Flags = 0x0000000000000203, RVA = 0x00000000017D5000 -> RVA = 0x0000000001A1E000
+build_contexts, step = 0x00000000002BE000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x0000000001762000 -> RVA = 0x0000000001A20000
+build_contexts, step = 0x00000000002BE000
+	build_context
+	Entry Id     =   17, STACK_DYN_MAX   , Page Count =    62, Attributes = 0x48, Flags = 0x0000000000000203, RVA = 0x0000000001772000 -> RVA = 0x0000000001A30000
+build_contexts, step = 0x00000000002BE000
+	build_context
+	Entry Id     =   18, STACK_DYN_MIN   , Page Count =     2, Attributes = 0x28, Flags = 0x0000000000000203, RVA = 0x00000000017B0000 -> RVA = 0x0000000001A6E000
+build_contexts, step = 0x00000000002BE000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000017B2000 -> RVA = 0x0000000001A70000
+build_contexts, step = 0x00000000002BE000
+	build_context
+	Entry Id     =   14, TCS_DYN         , Page Count =     1, Attributes = 0x28, Flags = 0x0000000000000100, RVA = 0x00000000017C2000 -> RVA = 0x0000000001A80000
+build_contexts, step = 0x00000000002BE000
+	build_context
+	Entry Id     =   16, SSA_DYN         , Page Count =     2, Attributes = 0x28, Flags = 0x0000000000000203, RVA = 0x00000000017C3000 -> RVA = 0x0000000001A81000
+build_contexts, step = 0x00000000002BE000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000017C5000 -> RVA = 0x0000000001A83000
+build_contexts, step = 0x00000000002BE000
+	build_context
+	Entry Id     =   15, TD_DYN          , Page Count =     2, Attributes = 0x28, Flags = 0x0000000000000203, RVA = 0x00000000017D5000 -> RVA = 0x0000000001A93000
+build_contexts, step = 0x0000000000333000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x0000000001762000 -> RVA = 0x0000000001A95000
+build_contexts, step = 0x0000000000333000
+	build_context
+	Entry Id     =   17, STACK_DYN_MAX   , Page Count =    62, Attributes = 0x48, Flags = 0x0000000000000203, RVA = 0x0000000001772000 -> RVA = 0x0000000001AA5000
+build_contexts, step = 0x0000000000333000
+	build_context
+	Entry Id     =   18, STACK_DYN_MIN   , Page Count =     2, Attributes = 0x28, Flags = 0x0000000000000203, RVA = 0x00000000017B0000 -> RVA = 0x0000000001AE3000
+build_contexts, step = 0x0000000000333000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000017B2000 -> RVA = 0x0000000001AE5000
+build_contexts, step = 0x0000000000333000
+	build_context
+	Entry Id     =   14, TCS_DYN         , Page Count =     1, Attributes = 0x28, Flags = 0x0000000000000100, RVA = 0x00000000017C2000 -> RVA = 0x0000000001AF5000
+build_contexts, step = 0x0000000000333000
+	build_context
+	Entry Id     =   16, SSA_DYN         , Page Count =     2, Attributes = 0x28, Flags = 0x0000000000000203, RVA = 0x00000000017C3000 -> RVA = 0x0000000001AF6000
+build_contexts, step = 0x0000000000333000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000017C5000 -> RVA = 0x0000000001AF8000
+build_contexts, step = 0x0000000000333000
+	build_context
+	Entry Id     =   15, TD_DYN          , Page Count =     2, Attributes = 0x28, Flags = 0x0000000000000203, RVA = 0x00000000017D5000 -> RVA = 0x0000000001B08000
+build_contexts, step = 0x00000000003A8000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x0000000001762000 -> RVA = 0x0000000001B0A000
+build_contexts, step = 0x00000000003A8000
+	build_context
+	Entry Id     =   17, STACK_DYN_MAX   , Page Count =    62, Attributes = 0x48, Flags = 0x0000000000000203, RVA = 0x0000000001772000 -> RVA = 0x0000000001B1A000
+build_contexts, step = 0x00000000003A8000
+	build_context
+	Entry Id     =   18, STACK_DYN_MIN   , Page Count =     2, Attributes = 0x28, Flags = 0x0000000000000203, RVA = 0x00000000017B0000 -> RVA = 0x0000000001B58000
+build_contexts, step = 0x00000000003A8000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000017B2000 -> RVA = 0x0000000001B5A000
+build_contexts, step = 0x00000000003A8000
+	build_context
+	Entry Id     =   14, TCS_DYN         , Page Count =     1, Attributes = 0x28, Flags = 0x0000000000000100, RVA = 0x00000000017C2000 -> RVA = 0x0000000001B6A000
+build_contexts, step = 0x00000000003A8000
+	build_context
+	Entry Id     =   16, SSA_DYN         , Page Count =     2, Attributes = 0x28, Flags = 0x0000000000000203, RVA = 0x00000000017C3000 -> RVA = 0x0000000001B6B000
+build_contexts, step = 0x00000000003A8000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =    16, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x00000000017C5000 -> RVA = 0x0000000001B6D000
+build_contexts, step = 0x00000000003A8000
+	build_context
+	Entry Id     =   15, TD_DYN          , Page Count =     2, Attributes = 0x28, Flags = 0x0000000000000203, RVA = 0x00000000017D5000 -> RVA = 0x0000000001B7D000
+build_contexts, step = 0x0000000000000000
+	build_context
+	Entry Id     =   10, GUARD           , Page Count =  1153, Attributes = 0x00, Flags = 0x0000000000000000, RVA = 0x0000000001B7F000 -> RVA = 0x0000000001B7F000
+[measure_enclave sign_tool.cpp:239] 
+The required memory is 22548480B.
+The required memory is 0x1581000, 22020 KB.
+[generate_compatible_metadata sign_tool.cpp:1078] 
+[dump_metadata_layout sign_tool.cpp:846] 
+	Metadata Version = 0x0000000200000004
+	Entry Id( 0) =    1, HEAP_MIN        ,  Page Count =     1,  Attributes = 0x01,  Flags = 0x0000000000000203,  RVA = 0x00000000002D0000 --- 0x00000000002D1000
+	Entry Id( 1) =    2, HEAP_INIT       ,  Page Count =  4095,  Attributes = 0x19,  Flags = 0x0000000000000203,  RVA = 0x00000000002D1000 --- 0x00000000012D0000
+	Entry Id( 2) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x00000000012D0000 --- 0x00000000012E0000
+	Entry Id( 3) =    7, STACK_MAX       ,  Page Count =    62,  Attributes = 0x5B,  Flags = 0x0000000000000203,  RVA = 0x00000000012E0000 --- 0x000000000131E000
+	Entry Id( 4) =    8, STACK_MIN       ,  Page Count =     2,  Attributes = 0x03,  Flags = 0x0000000000000203,  RVA = 0x000000000131E000 --- 0x0000000001320000
+	Entry Id( 5) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x0000000001320000 --- 0x0000000001330000
+	Entry Id( 6) =    4, TCS             ,  Page Count =     1,  Attributes = 0x03,  Flags = 0x0000000000000100,  RVA = 0x0000000001330000 --- 0x0000000001331000
+	Entry Id( 7) =    6, SSA             ,  Page Count =     2,  Attributes = 0x03,  Flags = 0x0000000000000203,  RVA = 0x0000000001331000 --- 0x0000000001333000
+	Entry Id( 8) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x0000000001333000 --- 0x0000000001343000
+	Entry Id( 9) =    5, TD              ,  Page Count =     2,  Attributes = 0x03,  Flags = 0x0000000000000203,  RVA = 0x0000000001343000 --- 0x0000000001345000
+	Entry Id(10) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x0000000001345000 --- 0x0000000001355000
+	Entry Id(11) =    7, STACK_MAX       ,  Page Count =    62,  Attributes = 0x43,  Flags = 0x0000000000000203,  RVA = 0x0000000001355000 --- 0x0000000001393000
+	Entry Id(12) =    8, STACK_MIN       ,  Page Count =     2,  Attributes = 0x03,  Flags = 0x0000000000000203,  RVA = 0x0000000001393000 --- 0x0000000001395000
+	Entry Id(13) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x0000000001395000 --- 0x00000000013A5000
+	Entry Id(14) =    4, TCS             ,  Page Count =     1,  Attributes = 0x03,  Flags = 0x0000000000000100,  RVA = 0x00000000013A5000 --- 0x00000000013A6000
+	Entry Id(15) =    6, SSA             ,  Page Count =     2,  Attributes = 0x03,  Flags = 0x0000000000000203,  RVA = 0x00000000013A6000 --- 0x00000000013A8000
+	Entry Id(16) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x00000000013A8000 --- 0x00000000013B8000
+	Entry Id(17) =    5, TD              ,  Page Count =     2,  Attributes = 0x03,  Flags = 0x0000000000000203,  RVA = 0x00000000013B8000 --- 0x00000000013BA000
+	Entry Id(18) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x00000000013BA000 --- 0x00000000013CA000
+	Entry Id(19) =    7, STACK_MAX       ,  Page Count =    62,  Attributes = 0x47,  Flags = 0x0000000000000203,  RVA = 0x00000000013CA000 --- 0x0000000001408000
+	Entry Id(20) =    8, STACK_MIN       ,  Page Count =     2,  Attributes = 0x07,  Flags = 0x0000000000000203,  RVA = 0x0000000001408000 --- 0x000000000140A000
+	Entry Id(21) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x000000000140A000 --- 0x000000000141A000
+	Entry Id(22) =    4, TCS             ,  Page Count =     1,  Attributes = 0x07,  Flags = 0x0000000000000100,  RVA = 0x000000000141A000 --- 0x000000000141B000
+	Entry Id(23) =    6, SSA             ,  Page Count =     2,  Attributes = 0x07,  Flags = 0x0000000000000203,  RVA = 0x000000000141B000 --- 0x000000000141D000
+	Entry Id(24) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x000000000141D000 --- 0x000000000142D000
+	Entry Id(25) =    5, TD              ,  Page Count =     2,  Attributes = 0x07,  Flags = 0x0000000000000203,  RVA = 0x000000000142D000 --- 0x000000000142F000
+	Entry Id(26) = 4105, THREAD_GROUP    ,  Entry Count =    8,  Load Times = 7,     LStep = 0x0000000000075000
+	Entry Id(27) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x0000000001762000 --- 0x0000000001772000
+	Entry Id(28) =   17, STACK_DYN_MAX   ,  Page Count =    62,  Attributes = 0x48,  Flags = 0x0000000000000203,  RVA = 0x0000000001772000 --- 0x00000000017B0000
+	Entry Id(29) =   18, STACK_DYN_MIN   ,  Page Count =     2,  Attributes = 0x28,  Flags = 0x0000000000000203,  RVA = 0x00000000017B0000 --- 0x00000000017B2000
+	Entry Id(30) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x00000000017B2000 --- 0x00000000017C2000
+	Entry Id(31) =   14, TCS_DYN         ,  Page Count =     1,  Attributes = 0x28,  Flags = 0x0000000000000100,  RVA = 0x00000000017C2000 --- 0x00000000017C3000
+	Entry Id(32) =   16, SSA_DYN         ,  Page Count =     2,  Attributes = 0x28,  Flags = 0x0000000000000203,  RVA = 0x00000000017C3000 --- 0x00000000017C5000
+	Entry Id(33) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x00000000017C5000 --- 0x00000000017D5000
+	Entry Id(34) =   15, TD_DYN          ,  Page Count =     2,  Attributes = 0x28,  Flags = 0x0000000000000203,  RVA = 0x00000000017D5000 --- 0x00000000017D7000
+	Entry Id(35) = 4115, THREAD_GROUP_DYN,  Entry Count =    8,  Load Times = 8,     LStep = 0x0000000000075000
+	Entry Id(36) =   10, GUARD           ,  Page Count =  1153,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x0000000001B7F000 --- 0x0000000002000000
+[dump_metadata_layout sign_tool.cpp:846] 
+	Metadata Version = 0x0000000200000001
+	Entry Id( 0) =    1, HEAP_MIN        ,  Page Count =     1,  Attributes = 0x01,  Flags = 0x0000000000000203,  RVA = 0x00000000002D0000 --- 0x00000000002D1000
+	Entry Id( 1) =    2, HEAP_INIT       ,  Page Count =  4095,  Attributes = 0x19,  Flags = 0x0000000000000203,  RVA = 0x00000000002D1000 --- 0x00000000012D0000
+	Entry Id( 2) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x00000000012D0000 --- 0x00000000012E0000
+	Entry Id( 3) =    7, STACK_MAX       ,  Page Count =    62,  Attributes = 0x5B,  Flags = 0x0000000000000203,  RVA = 0x00000000012E0000 --- 0x000000000131E000
+	Entry Id( 4) =    8, STACK_MIN       ,  Page Count =     2,  Attributes = 0x03,  Flags = 0x0000000000000203,  RVA = 0x000000000131E000 --- 0x0000000001320000
+	Entry Id( 5) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x0000000001320000 --- 0x0000000001330000
+	Entry Id( 6) =    4, TCS             ,  Page Count =     1,  Attributes = 0x03,  Flags = 0x0000000000000100,  RVA = 0x0000000001330000 --- 0x0000000001331000
+	Entry Id( 7) =    6, SSA             ,  Page Count =     2,  Attributes = 0x03,  Flags = 0x0000000000000203,  RVA = 0x0000000001331000 --- 0x0000000001333000
+	Entry Id( 8) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x0000000001333000 --- 0x0000000001343000
+	Entry Id( 9) =    5, TD              ,  Page Count =     2,  Attributes = 0x03,  Flags = 0x0000000000000203,  RVA = 0x0000000001343000 --- 0x0000000001345000
+	Entry Id(10) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x0000000001345000 --- 0x0000000001355000
+	Entry Id(11) =    7, STACK_MAX       ,  Page Count =    62,  Attributes = 0x43,  Flags = 0x0000000000000203,  RVA = 0x0000000001355000 --- 0x0000000001393000
+	Entry Id(12) =    8, STACK_MIN       ,  Page Count =     2,  Attributes = 0x03,  Flags = 0x0000000000000203,  RVA = 0x0000000001393000 --- 0x0000000001395000
+	Entry Id(13) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x0000000001395000 --- 0x00000000013A5000
+	Entry Id(14) =    4, TCS             ,  Page Count =     1,  Attributes = 0x03,  Flags = 0x0000000000000100,  RVA = 0x00000000013A5000 --- 0x00000000013A6000
+	Entry Id(15) =    6, SSA             ,  Page Count =     2,  Attributes = 0x03,  Flags = 0x0000000000000203,  RVA = 0x00000000013A6000 --- 0x00000000013A8000
+	Entry Id(16) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x00000000013A8000 --- 0x00000000013B8000
+	Entry Id(17) =    5, TD              ,  Page Count =     2,  Attributes = 0x03,  Flags = 0x0000000000000203,  RVA = 0x00000000013B8000 --- 0x00000000013BA000
+	Entry Id(18) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x00000000013BA000 --- 0x00000000013CA000
+	Entry Id(19) =    7, STACK_MAX       ,  Page Count =    62,  Attributes = 0x47,  Flags = 0x0000000000000203,  RVA = 0x00000000013CA000 --- 0x0000000001408000
+	Entry Id(20) =    8, STACK_MIN       ,  Page Count =     2,  Attributes = 0x07,  Flags = 0x0000000000000203,  RVA = 0x0000000001408000 --- 0x000000000140A000
+	Entry Id(21) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x000000000140A000 --- 0x000000000141A000
+	Entry Id(22) =    4, TCS             ,  Page Count =     1,  Attributes = 0x07,  Flags = 0x0000000000000100,  RVA = 0x000000000141A000 --- 0x000000000141B000
+	Entry Id(23) =    6, SSA             ,  Page Count =     2,  Attributes = 0x07,  Flags = 0x0000000000000203,  RVA = 0x000000000141B000 --- 0x000000000141D000
+	Entry Id(24) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x000000000141D000 --- 0x000000000142D000
+	Entry Id(25) =    5, TD              ,  Page Count =     2,  Attributes = 0x07,  Flags = 0x0000000000000203,  RVA = 0x000000000142D000 --- 0x000000000142F000
+	Entry Id(26) = 4105, THREAD_GROUP    ,  Entry Count =    8,  Load Times = 7,     LStep = 0x0000000000075000
+	Entry Id(27) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x0000000001762000 --- 0x0000000001772000
+	Entry Id(28) =   17, STACK_DYN_MAX   ,  Page Count =    62,  Attributes = 0x48,  Flags = 0x0000000000000203,  RVA = 0x0000000001772000 --- 0x00000000017B0000
+	Entry Id(29) =   18, STACK_DYN_MIN   ,  Page Count =     2,  Attributes = 0x28,  Flags = 0x0000000000000203,  RVA = 0x00000000017B0000 --- 0x00000000017B2000
+	Entry Id(30) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x00000000017B2000 --- 0x00000000017C2000
+	Entry Id(31) =   14, TCS_DYN         ,  Page Count =     1,  Attributes = 0x28,  Flags = 0x0000000000000100,  RVA = 0x00000000017C2000 --- 0x00000000017C3000
+	Entry Id(32) =   16, SSA_DYN         ,  Page Count =     2,  Attributes = 0x28,  Flags = 0x0000000000000203,  RVA = 0x00000000017C3000 --- 0x00000000017C5000
+	Entry Id(33) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x00000000017C5000 --- 0x00000000017D5000
+	Entry Id(34) =   15, TD_DYN          ,  Page Count =     2,  Attributes = 0x28,  Flags = 0x0000000000000203,  RVA = 0x00000000017D5000 --- 0x00000000017D7000
+	Entry Id(35) = 4115, THREAD_GROUP_DYN,  Entry Count =    8,  Load Times = 8,     LStep = 0x0000000000075000
+	Entry Id(36) =   10, GUARD           ,  Page Count =  1153,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x0000000001B7F000 --- 0x0000000002000000
+[dump_metadata_layout sign_tool.cpp:846] 
+	Metadata Version = 0x0000000100000004
+	Entry Id( 0) =    1, HEAP_MIN        ,  Page Count =     1,  Attributes = 0x01,  Flags = 0x0000000000000203,  RVA = 0x00000000002D0000 --- 0x00000000002D1000
+	Entry Id( 1) =    2, HEAP_INIT       ,  Page Count =  4095,  Attributes = 0x11,  Flags = 0x0000000000000203,  RVA = 0x00000000002D1000 --- 0x00000000012D0000
+	Entry Id( 2) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x00000000012D0000 --- 0x00000000012E0000
+	Entry Id( 3) =    7, STACK_MAX       ,  Page Count =    62,  Attributes = 0x53,  Flags = 0x0000000000000203,  RVA = 0x00000000012E0000 --- 0x000000000131E000
+	Entry Id( 4) =    8, STACK_MIN       ,  Page Count =     2,  Attributes = 0x03,  Flags = 0x0000000000000203,  RVA = 0x000000000131E000 --- 0x0000000001320000
+	Entry Id( 5) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x0000000001320000 --- 0x0000000001330000
+	Entry Id( 6) =    4, TCS             ,  Page Count =     1,  Attributes = 0x03,  Flags = 0x0000000000000100,  RVA = 0x0000000001330000 --- 0x0000000001331000
+	Entry Id( 7) =    6, SSA             ,  Page Count =     2,  Attributes = 0x03,  Flags = 0x0000000000000203,  RVA = 0x0000000001331000 --- 0x0000000001333000
+	Entry Id( 8) =   10, GUARD           ,  Page Count =    16,  Attributes = 0x00,  Flags = 0x0000000000000000,  RVA = 0x0000000001333000 --- 0x0000000001343000
+	Entry Id( 9) =    5, TD              ,  Page Count =     2,  Attributes = 0x03,  Flags = 0x0000000000000203,  RVA = 0x0000000001343000 --- 0x0000000001345000
+	Entry Id(10) = 4105, THREAD_GROUP    ,  Entry Count =    8,  Load Times = 9,     LStep = 0x0000000000075000
+Succeed.
+<EnclaveConfiguration>
+    <ProdID>0</ProdID>
+    <ISVSVN>0</ISVSVN>
+    <StackMaxSize>0x40000</StackMaxSize>
+    <HeapMaxSize>0x1000000</HeapMaxSize>
+    <TCSNum>10</TCSNum>
+    <TCSPolicy>1</TCSPolicy>
+    <DisableDebug>0</DisableDebug>
+</EnclaveConfiguration>
+[build_secs /home/pigeon/linux-sgx/psw/urts/loader.cpp:627] Enclave start addr. = (nil), Size = 0x2000000, 32768 KB
+SIGN =>  TestEnclave.signed.so
+make[1]: Leaving directory '/home/pigeon/intel-sgx-ssl/Linux/sgx/test_app'
